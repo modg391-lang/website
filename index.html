@@ -79,14 +79,14 @@
 
     <!-- Fullscreen Image Viewer -->
     <div id="image-viewer" class="fixed inset-0 bg-black bg-opacity-95 z-[100] hidden flex-col items-center justify-center">
-        <button onclick="closeImageViewer()" class="absolute top-4 right-4 text-white p-2 bg-black bg-opacity-50 rounded-full">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        <button onclick="closeImageViewer()" class="absolute top-4 right-4 text-white p-1.5 bg-black bg-opacity-50 rounded-full hover:bg-opacity-70 transition-colors">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
         </button>
         <img id="viewer-image" class="max-w-full max-h-[90vh] object-contain px-4" src="">
     </div>
 
     <script>
-        const games = [{"id":1,"title":"Cacing Arena","version":"v1.1","updateDate":"Rabu, 29 jul","size":"22.59mb","rating":999.0,"ratingCount":1000,"genre":"action, rpg","androidVersion":"Support Device!","developer":"tap apks","description":"game","imageUrl":"https://ik.imagekit.io/he6c4oh6cy/file_00000000ebb88207b1747290acaa4c02.png","apkUrl":"https://www.mediafire.com/file/m541qwicizjwsah/Cacing_Arena_v1.0.apk/file","screenshotsStr":"https://ik.imagekit.io/he6c4oh6cy/file_00000000ebb88207b1747290acaa4c02.png"}];
+        const games = [{"id":1,"title":"Arena Cacing","version":"v 1.0","updateDate":"Rabu, 29 juli","size":"23.82Mb","genre":"Simulasi,","androidVersion":"7.0+","developer":"Tap-Apks","description":"# 🐛 Cacing Arena Online\n\nMasuki arena dan buktikan siapa cacing terkuat! **Cacing Arena Online** adalah game multiplayer real-time yang menguji kecepatan, strategi, dan refleksmu saat bertarung melawan pemain lain dari seluruh dunia.\n\nKumpulkan makanan untuk memperbesar tubuh cacingmu, hindari tabrakan dengan lawan yang lebih besar, dan gunakan strategi untuk menjebak musuh agar keluar dari permainan. Semakin besar cacingmu, semakin besar peluangmu untuk menguasai arena dan menduduki peringkat teratas.\n\n## 🌍 Fitur Utama\n\n🎮 Multiplayer Online\n• Bertanding melawan pemain lain secara real-time.\n• Arena selalu dipenuhi pemain aktif.\n\n🍎 Kumpulkan Makanan\n• Makan buah dan makanan yang tersebar di arena.\n• Perbesar tubuh cacingmu dan raih skor tertinggi.\n\n🏆 Leaderboard Global\n• Bersaing menjadi pemain terbaik.\n• Naikkan peringkatmu dan kuasai papan leaderboard.\n\n🚀 Boost Cepat\n• Aktifkan Boost untuk mengejar lawan atau melarikan diri dari bahaya.\n• Gunakan dengan strategi agar tidak kehilangan ukuran tubuh.\n\n🔐 Login Akun\n• Simpan progres permainan.\n• Lanjutkan bermain kapan saja menggunakan akunmu.\n\n🎨 Skin Menarik\n• Gunakan berbagai tampilan cacing yang unik.\n• Tunjukkan gaya bermainmu di arena.\n\n⚡ Gameplay Ringan\n• Kontrol sederhana dan mudah dimainkan.\n• Cocok untuk semua usia.\n\n## Cara Bermain\n\n• Gerakkan cacing untuk mengumpulkan makanan.\n• Hindari menabrak tubuh cacing lain.\n• Gunakan Boost di saat yang tepat.\n• Bertahan selama mungkin.\n• Jadilah cacing terbesar dan kuasai arena!\n\nSiap menjadi Raja Arena? Unduh sekarang dan buktikan kemampuanmu dalam pertarungan cacing online yang seru, kompetitif, dan penuh tantangan!","imageUrl":"https://ik.imagekit.io/he6c4oh6cy/file_00000000ebb88207b1747290acaa4c02.png","apkUrl":"https://www.mediafire.com/file/m541qwicizjwsah/Cacing_Arena_v1.0.apk/file","screenshotsStr":"https://ik.imagekit.io/he6c4oh6cy/file_000000001e4482079e9a0f79b984dbbc.png,https://ik.imagekit.io/he6c4oh6cy/file_00000000e4c8821194401debf0b02f17.png,https://ik.imagekit.io/he6c4oh6cy/file_00000000f6ec8211ad61f9f81e354a7e.png"}];
 
         function openImageViewer(url) {
             document.getElementById('viewer-image').src = url;
@@ -213,6 +213,14 @@
                     <div class="flex items-center justify-between border border-gray-200 rounded-xl p-4 mt-3">
                         <div class="text-sm text-gray-600">Requires Android</div>
                         <div class="text-sm font-bold">${game.androidVersion}</div>
+                    </div>
+                    
+                    <div class="flex items-center justify-between border ${game.network === 'Online' ? 'border-green-200 bg-green-50' : 'border-gray-200 bg-gray-50'} rounded-xl p-4 mt-3">
+                        <div class="text-sm ${game.network === 'Online' ? 'text-green-700' : 'text-gray-600'} font-medium">Network</div>
+                        <div class="text-sm font-bold ${game.network === 'Online' ? 'text-green-700' : 'text-gray-800'} flex items-center gap-1">
+                            ${game.network === 'Online' ? '<span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>' : ''}
+                            ${game.network}!
+                        </div>
                     </div>
                     
                     ${screenshotsHtml}
