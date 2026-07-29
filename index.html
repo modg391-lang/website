@@ -77,8 +77,28 @@
         <!-- Detail rendered here -->
     </div>
 
+    <!-- Fullscreen Image Viewer -->
+    <div id="image-viewer" class="fixed inset-0 bg-black bg-opacity-95 z-[100] hidden flex-col items-center justify-center">
+        <button onclick="closeImageViewer()" class="absolute top-4 right-4 text-white p-2 bg-black bg-opacity-50 rounded-full">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+        <img id="viewer-image" class="max-w-full max-h-[90vh] object-contain px-4" src="">
+    </div>
+
     <script>
-        const games = [{"id":1,"title":"Cacing Arena","version":"v1.1","updateDate":"Rabu, 29 jul","size":"22.59mb","rating":999.0,"ratingCount":1000,"genre":"action, rpg","androidVersion":"semua versi android","developer":"tap apks","description":"game","imageUrl":"https://ik.imagekit.io/he6c4oh6cy/file_00000000ebb88207b1747290acaa4c02.png","apkUrl":"https://www.mediafire.com/file/m541qwicizjwsah/Cacing_Arena_v1.0.apk/file","screenshotsStr":"https://ik.imagekit.io/he6c4oh6cy/file_00000000ebb88207b1747290acaa4c02.png"}];
+        const games = [{"id":1,"title":"Cacing Arena","version":"v1.1","updateDate":"Rabu, 29 jul","size":"22.59mb","rating":999.0,"ratingCount":1000,"genre":"action, rpg","androidVersion":"Support Device!","developer":"tap apks","description":"game","imageUrl":"https://ik.imagekit.io/he6c4oh6cy/file_00000000ebb88207b1747290acaa4c02.png","apkUrl":"https://www.mediafire.com/file/m541qwicizjwsah/Cacing_Arena_v1.0.apk/file","screenshotsStr":"https://ik.imagekit.io/he6c4oh6cy/file_00000000ebb88207b1747290acaa4c02.png"}];
+
+        function openImageViewer(url) {
+            document.getElementById('viewer-image').src = url;
+            document.getElementById('image-viewer').classList.remove('hidden');
+            document.getElementById('image-viewer').classList.add('flex');
+        }
+
+        function closeImageViewer() {
+            document.getElementById('image-viewer').classList.add('hidden');
+            document.getElementById('image-viewer').classList.remove('flex');
+            document.getElementById('viewer-image').src = '';
+        }
 
         function toggleDrawer() {
             const drawer = document.getElementById('drawer');
@@ -143,7 +163,7 @@
                         <div class="mt-6">
                             <h3 class="font-bold text-lg mb-2">Screenshot</h3>
                             <div class="flex overflow-x-auto gap-3 pb-2">
-                                ${urls.map(url => `<img src="${url}" class="w-60 h-32 object-cover rounded-lg">`).join('')}
+                                ${urls.map(url => `<img src="${url}" onclick="openImageViewer('${url}')" class="w-60 h-32 object-cover rounded-lg cursor-pointer">`).join('')}
                             </div>
                         </div>
                     `;
@@ -188,6 +208,11 @@
                             <div class="text-xs text-gray-500 mb-1">Update</div>
                             <div class="text-sm font-bold">${game.updateDate}</div>
                         </div>
+                    </div>
+                    
+                    <div class="flex items-center justify-between border border-gray-200 rounded-xl p-4 mt-3">
+                        <div class="text-sm text-gray-600">Requires Android</div>
+                        <div class="text-sm font-bold">${game.androidVersion}</div>
                     </div>
                     
                     ${screenshotsHtml}
