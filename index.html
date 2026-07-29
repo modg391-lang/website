@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cloud Gaming</title>
+    <title>Tap Apks</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         .star-icon { color: #FFB800; }
@@ -11,10 +11,42 @@
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans">
+    <!-- Drawer Overlay -->
+    <div id="drawer-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-[60] hidden transition-opacity" onclick="toggleDrawer()"></div>
+    
+    <!-- Drawer Content -->
+    <div id="drawer" class="fixed inset-y-0 left-0 w-72 bg-white z-[70] transform -translate-x-full transition-transform duration-300 overflow-y-auto">
+        <div class="bg-[#0B1120] text-white p-6">
+            <h2 class="text-xl font-bold">Tap Apks</h2>
+            <p class="text-sm text-gray-400 mt-1">Developer Info</p>
+        </div>
+        <div class="p-6">
+            <h3 class="text-gray-500 text-xs font-bold uppercase tracking-wider mb-4">Follow Kami</h3>
+            <div class="space-y-4">
+                <a href="https://youtube.com/@tapapks?si=bdcNGukqLTOpckqn" target="_blank" class="flex items-center gap-3 text-gray-700 hover:text-red-600 transition-colors">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M21.582 6.186a2.6 2.6 0 0 0-1.83-1.841C18.136 3.9 12 3.9 12 3.9s-6.137 0-7.752.445a2.6 2.6 0 0 0-1.831 1.841C2 7.822 2 12 2 12s0 4.178.417 5.814a2.6 2.6 0 0 0 1.831 1.841c1.615.445 7.752.445 7.752.445s6.137 0 7.752-.445a2.6 2.6 0 0 0 1.83-1.841C22 16.178 22 12 22 12s0-4.178-.418-5.814ZM9.667 15.025V8.975L14.996 12l-5.329 3.025Z"/></svg>
+                    <span class="font-medium">YouTube</span>
+                </a>
+                <a href="https://www.tiktok.com/@tapsapks?_r=1&_t=ZS-981qTLxVJUV" target="_blank" class="flex items-center gap-3 text-gray-700 hover:text-black transition-colors">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12.525 2c-.015.719-.013 1.439 0 2.158 1.411.082 2.825.438 4.093 1.134v3.136a7.712 7.712 0 0 1-4.093-1.123v8.528c-.012 3.528-3.082 6.309-6.602 6.07-3.238-.172-5.718-2.923-5.728-6.17.009-3.242 2.483-5.992 5.719-6.168v3.298c-1.393.076-2.585 1.144-2.67 2.535-.126 1.636 1.258 3.064 2.88 3 1.41-.013 2.518-1.218 2.518-2.628V2h3.883Z"/></svg>
+                    <span class="font-medium">TikTok</span>
+                </a>
+                <a href="https://www.facebook.com/profile.php?id=61580443751887" target="_blank" class="flex items-center gap-3 text-gray-700 hover:text-blue-600 transition-colors">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M14 13.5h2.5l1-4H14v-2c0-1.03 0-2 2-2h1.5V2.14c-.326-.043-1.557-.14-2.857-.14C11.928 2 10 3.657 10 6.7v2.8H7v4h3V22h4v-8.5Z"/></svg>
+                    <span class="font-medium">Facebook</span>
+                </a>
+                <a href="https://t.me/TapApks" target="_blank" class="flex items-center gap-3 text-gray-700 hover:text-blue-500 transition-colors">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M20.665 3.717 3.232 10.428c-1.63.653-1.624 1.565-.298 1.972l4.493 1.403 10.43-6.57c.49-.311.94-.143.568.188L9.98 14.993l-.317 4.544c.465 0 .668-.21.926-.462l2.222-2.157 4.62 3.414c.85.47 1.464.227 1.675-.79l3.032-14.288c.287-1.157-.42-1.685-1.473-1.537Z"/></svg>
+                    <span class="font-medium">Telegram</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
     <header class="bg-[#0B1120] text-white p-4 flex items-center justify-between sticky top-0 z-50">
         <div class="flex items-center gap-3">
-            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"/></svg>
-            <span class="font-bold text-lg cursor-pointer" onclick="renderHome()">Cloud Gaming</span>
+            <svg class="w-6 h-6 cursor-pointer" onclick="toggleDrawer()" fill="currentColor" viewBox="0 0 24 24"><path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"/></svg>
+            <span class="font-bold text-lg cursor-pointer" onclick="renderHome()">Tap Apks</span>
         </div>
         <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
     </header>
@@ -37,7 +69,7 @@
             </div>
         </div>
         <footer class="bg-[#0B1120] text-center p-4">
-            <p class="text-xs text-white">© 2026 Cloud Gaming. All rights reserved.</p>
+            <p class="text-xs text-white">© 2026 Tap Apks. All rights reserved.</p>
         </footer>
     </div>
 
@@ -46,7 +78,19 @@
     </div>
 
     <script>
-        const games = [{"id":1,"title":"Cacing Arena","version":"v1.1","updateDate":"Rabu, 29 jul","size":"22.59mb","rating":9999.0,"ratingCount":9999,"genre":"action, rpg","developer":"tap apka","description":"game","imageUrl":"https://ik.imagekit.io/he6c4oh6cy/file_00000000ebb88207b1747290acaa4c02.png","apkUrl":"https://www.mediafire.com/file/m541qwicizjwsah/Cacing_Arena_v1.0.apk/file","screenshotsStr":"https://ik.imagekit.io/he6c4oh6cy/file_00000000ebb88207b1747290acaa4c02.png"}];
+        const games = [{"id":1,"title":"Cacing Arena","version":"v1.1","updateDate":"Rabu, 29 jul","size":"22.59mb","rating":999.0,"ratingCount":1000,"genre":"action, rpg","androidVersion":"semua versi android","developer":"tap apks","description":"game","imageUrl":"https://ik.imagekit.io/he6c4oh6cy/file_00000000ebb88207b1747290acaa4c02.png","apkUrl":"https://www.mediafire.com/file/m541qwicizjwsah/Cacing_Arena_v1.0.apk/file","screenshotsStr":"https://ik.imagekit.io/he6c4oh6cy/file_00000000ebb88207b1747290acaa4c02.png"}];
+
+        function toggleDrawer() {
+            const drawer = document.getElementById('drawer');
+            const overlay = document.getElementById('drawer-overlay');
+            if (drawer.classList.contains('-translate-x-full')) {
+                drawer.classList.remove('-translate-x-full');
+                overlay.classList.remove('hidden');
+            } else {
+                drawer.classList.add('-translate-x-full');
+                overlay.classList.add('hidden');
+            }
+        }
 
         function renderHome() {
             document.getElementById('home-view').classList.remove('hidden');
