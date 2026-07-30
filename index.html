@@ -130,6 +130,51 @@
         </div>
     </div>
 
+    <!-- Share Link Modal -->
+    <div id="share-popup" class="fixed inset-0 bg-black bg-opacity-70 z-[110] hidden items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-sm w-full p-6 shadow-2xl relative">
+            <button onclick="closeSharePopup()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+            
+            <h3 class="font-bold text-lg text-gray-950 mb-4">Bagikan Game</h3>
+            
+            <p class="text-xs text-gray-500 mb-2">Salin link di bawah ini untuk membagikan halaman game ini secara langsung:</p>
+            
+            <!-- Link Copy Box -->
+            <div class="flex gap-2 items-center bg-gray-50 border border-gray-200 rounded-xl p-2 pl-3 mb-4">
+                <input id="share-url-input" type="text" readonly class="bg-transparent text-sm text-gray-700 flex-1 outline-none font-mono truncate">
+                <button id="copy-btn" onclick="copyShareLink()" class="bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold px-3.5 py-2 rounded-lg transition-colors flex-shrink-0">
+                    Salin
+                </button>
+            </div>
+            
+            <!-- Social Share Buttons -->
+            <div class="grid grid-cols-3 gap-2 mt-4">
+                <a id="share-wa" href="#" target="_blank" class="flex flex-col items-center gap-1.5 p-3 rounded-xl hover:bg-green-50 text-green-600 transition-colors">
+                    <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.713-1.458L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.42 9.864-9.86.002-2.636-1.02-5.115-2.882-6.979C16.592 1.951 14.118.928 11.48.928 6.046.928 1.623 5.35 1.62 10.784c-.001 1.702.449 3.364 1.303 4.825L1.97 20.35l4.677-1.196zm12.39-7.14c-.33-.165-1.951-.963-2.251-1.072-.3-.11-.518-.165-.736.165-.218.33-.844 1.072-1.034 1.292-.19.22-.38.242-.71.077-1.46-.733-2.527-1.282-3.52-2.984-.262-.45.262-.418.75-.1.438.35.485.41.673.74.188.33.094.618-.047.88-.14.262-.736 1.77-.991 2.39-.248.6-.504.514-.69.522-.17.008-.364.01-.559.01a1.077 1.077 0 00-.78.363c-.261.286-1.002.977-1.002 2.384s1.024 2.766 1.168 2.956c.143.19 2.015 3.076 4.881 4.316.682.295 1.214.47 1.629.6.685.217 1.307.186 1.8.113.55-.082 1.95-.797 2.225-1.568.275-.77.275-1.43.193-1.568-.083-.138-.3-.22-.63-.385z"/>
+                    </svg>
+                    <span class="text-xs font-semibold text-gray-700">WhatsApp</span>
+                </a>
+                <a id="share-tg" href="#" target="_blank" class="flex flex-col items-center gap-1.5 p-3 rounded-xl hover:bg-blue-50 text-blue-500 transition-colors">
+                    <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-1-.65-.35-1 .22-1.58.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.2-.08-.06-.19-.04-.27-.02-.12.02-1.96 1.24-5.54 3.65-.52.36-.97.53-1.34.52-.42-.01-1.21-.24-1.8-.44-.72-.24-1.29-.37-1.24-.78.03-.21.32-.43.88-.66 3.44-1.5 5.74-2.49 6.89-2.96 3.29-1.36 3.98-1.6 4.43-1.61.1 0 .32.02.46.14.12.1.15.24.17.34.02.13.02.26.01.37z"/>
+                    </svg>
+                    <span class="text-xs font-semibold text-gray-700">Telegram</span>
+                </a>
+                <a id="share-fb" href="#" target="_blank" class="flex flex-col items-center gap-1.5 p-3 rounded-xl hover:bg-blue-50 text-blue-700 transition-colors">
+                    <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                    </svg>
+                    <span class="text-xs font-semibold text-gray-700">Facebook</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
     <script>
         const games = [{"id":3,"title":"Harekat 2 Online","version":"5.2.5","updateDate":"Kamis, 30 juli","size":"875.35 Mb","rating":5.6,"ratingCount":1000,"genre":"Action, Multiplayer, Open World","androidVersion":"8.1","developer":"Devlaps Ltd","description":"Harekat 2 adalah gim simulasi militer taktis yang menyajikan pengalaman operasi medan tempur yang autentik. Harekat 2 berfokus pada pertempuran darat yang realistis, di mana para pemain mengoordinasikan peran, kendaraan, dan perlengkapan dalam pertempuran daring bersama. Gim ini cocok bagi pemain yang mengutamakan perencanaan matang dan kerja sama tim yang solid. Seiring berjalannya misi, situasi akan berubah dan pemain harus menyesuaikan taktik untuk menyelesaikan tujuan secara bersama-sama. Pengalaman bermainnya sangat mengapresiasi komunikasi, ketepatan waktu, dan pemilihan perlengkapan yang cerdas, yang membantu skuad bergerak sebagai satu kesatuan di medan yang luas. Bagi pengguna yang mempertimbangkan berbagai opsi instalasi, APK Harekat 2 memungkinkan Anda bermain di perangkat Android dengan kontrol yang jelas dan menu yang mudah diakses.\n\nFitur utama Harekat 2 Realisme berbasis masukan komunitas Harekat 2 dikembangkan berdasarkan masukan dari pemain Harekat TTZA untuk menciptakan simulasi militer yang realistis. Perilaku kendaraan, senjata, dan perlengkapan terasa sesuai dengan peran aslinya. Aspek fisika dan suara dirancang untuk mencerminkan pergerakan serta jarak yang nyata, sehingga mendukung pengambilan keputusan yang tepat saat pertempuran. Operasi darat dan konvoi di dunia terbuka Peta yang luas memberikan ruang bagi skuad untuk merencanakan rute, menentukan titik jalan (*waypoint*), dan mengatur jarak antar-kendaraan di berbagai medan. Anda dapat bekerja sama dengan teman untuk membentuk konvoi, menentukan kendaraan pemimpin dan pendukung, serta mendistribusikan perbekalan ke posisi garis depan. Struktur ini memperjelas pembagian peran saat tim bergerak menuju sasaran. Siklus siang-malam dan perubahan cuaca Waktu dan kondisi cuaca memengaruhi jarak pandang serta jangkauan pertempuran. Kabut membatasi jarak pandang, hujan mengubah pengendalian kendaraan, dan terik matahari menimbulkan silau. Seiring perubahan kondisi, Anda dapat menyesuaikan optik, kecepatan gerak, dan strategi pendekatan agar setiap kontak senjata ditangani dengan respons yang tepat. Progresi, pembelian, dan kustomisasi Harekat 2 menawarkan sistem progresi yang mendalam melalui beragam aset militer. Anda dapat membeli lebih dari 13 jenis kendaraan, memodifikasi lebih dari 9 jenis senjata, dan melengkapi diri dengan berbagai perlengkapan sesuai kebutuhan peran. Sistem ini memungkinkan peningkatan kemampuan secara bertahap tanpa memaksakan gaya bermain tertentu. Kerja sama tim daring dan koordinasi misi Server multipemain mendukung skuad untuk berbagi tugas dan menyinkronkan waktu sebelum terlibat kontak senjata. Komunikasi yang jelas memudahkan pemain dalam menandai target, meminta dukungan logistik, dan memulihkan diri setelah pertempuran. Dengan koordinasi yang baik, tim tetap terorganisasi mulai dari tahap persiapan hingga evakuasi. Audiovisual dan mekanik yang imersif Grafis berkualitas tinggi dan audio spasial membantu pemain mengenali medan serta ancaman di sekitar. Aspek pergerakan, hentakan senjata (*recoil*), dan pengendalian kendaraan memberikan pengalaman yang konsisten di berbagai peran. Detail-detail ini mendorong perencanaan yang matang, bukan sekadar aksi terburu-buru ala gim arkade.\n\nCatatan penting untuk Harekat 2 Permainan ini mungkin menampilkan iklan dan menawarkan pembelian dalam aplikasi untuk item tambahan atau peningkatan. Pembelian dan perubahan saldo dilakukan melalui menu di dalam permainan, sehingga pengguna sebaiknya memeriksa notifikasi atau instruksi yang muncul sebelum mengonfirmasi transaksi apa pun. Ketersediaan konten dan harga dapat berbeda-beda tergantung wilayah. Berdasarkan informasi dari pengembang, data lokasi dapat dikumpulkan atau dibagikan untuk kebutuhan operasional, dan data dienkripsi saat dalam proses transmisi. Pengguna dapat mengajukan permintaan penghapusan data melalui saluran dukungan resmi. Untuk informasi terkini mengenai praktik penanganan data, silakan kunjungi situs web pengembang.\n\nCommunity and availability for Harekat 2\nHarekat 2 is available on Android, and an iOS version is also offered by the developer. Release timing and features can differ between platforms. For the official community, the developer maintains a Discord; visit the developer website to find the current invite and announcements.\n\nAvoid searching for or using hacks such as “Unlimited Money and Gems.” Unofficial modifications can break gameplay, risk account action, or expose devices to unwanted files. Use the official build to keep progression and saves stable.\n\nCara bermain Harekat 2 di Android Pastikan koneksi stabil dan pilih server yang sesuai dengan wilayah Anda. Sebagai persiapan awal, unduh Harekat 2 dan periksa pengaturan dalam gim sebelum bergabung dengan skuad. Buka gim dan selesaikan pengaturan profil dasar. Kemudian, pilih server dengan *ping* dan jumlah pemain yang memadai agar responsivitas permainan tetap terjaga. Pilih peran dan kendaraan yang sesuai dengan misi. Periksa perlengkapan (*loadout*), beli atau pasang item yang dibutuhkan, serta pastikan ketersediaan amunisi dan peralatan untuk tugas tersebut. Bentuk skuad dan susun konvoi. Tentukan kendaraan pemimpin, atur posisi dukungan dan logistik, serta bagikan titik tujuan (*waypoint*) agar semua anggota memahami jarak antar-kendaraan dan kecepatan yang harus dijaga. Periksa kondisi cuaca dan waktu sebelum bergerak. Sesuaikan optik, pilih rute yang terlindung, atur lampu depan saat malam hari, dan jaga komunikasi untuk mengamankan sisi samping (*flank*). Koordinasikan respons saat terjadi kontak senjata sebagai satu tim. Informasikan posisi target, manfaatkan perlindungan (*cover*), kelola pasokan ulang, dan berkumpul kembali untuk evakuasi. Setelah misi selesai, tinjau peningkatan (*upgrade*) dan sesuaikan peran jika perlu.","warningDescription":"💎 Unlimited Resources\n⭐ Level Up Instantly\n🔓 Unlock All Items\n🗝 Unlock Room Cards\n😀 Unlock New Emotes\n🚗 Unlock All Vehicles\n👕 Unlock All Outfits\n🎒 Unlock All Backpacks\n👤 Unban Akun ✅(🆕)\n💰 Full Resources Included\n🎥 Free Video Tutorial\n🛠 Easy Installation Guide\n⚡ Lifetime Access\n🔄 Free Future Updates\n🛡 Safe & Easy to Use\n\nKELEBIHAN\n• Bisa Unban Akun yang di blokir\n• Bisa beli Kartu kamar tanpa menonton iklan\n• Bisa beli kendaraan secara gratis\n• Bisa beli pakaian Prajurit secara gratis\n• Bisa beli Senjata secara gratis\n• Bisa beli Kendaraan secara gratis\n• Bisa naikin Level sesuka hati\n• Bisa Pakai Infinity Health\n• Bisa Infinity Ammo\n• Banyak kegunaannya 1000 Manfaat.","imageUrl":"https://ik.imagekit.io/he6c4oh6cy/unnamed.webp?updatedAt=1785401182268","apkUrl":"","network":"Online","screenshotsStr":"https://ik.imagekit.io/he6c4oh6cy/Screenshot_2026-07-30-18-55-16-39_a80c783d7918ae95c7f5f709ec9b0f86.jpg,https://ik.imagekit.io/he6c4oh6cy/Screenshot_2026-07-30-18-57-03-15_a80c783d7918ae95c7f5f709ec9b0f86.jpg,https://ik.imagekit.io/he6c4oh6cy/Screenshot_2026-07-30-18-57-43-16_a80c783d7918ae95c7f5f709ec9b0f86.jpg","priceType":"VIP"},{"id":2,"title":"Harekat 2 Online","version":"v5.2.5","updateDate":"may 31, 2026","size":"911.96 Mb","rating":16.0,"ratingCount":250000,"genre":"Action, Open World, Multiplayer","androidVersion":"Android 8.1 (Oreo) atau lebih baru (minimal).","developer":"Devlaps Ltd","description":"Harekat 2 adalah gim simulasi militer taktis yang menyajikan pengalaman operasi medan tempur yang autentik. Harekat 2 berfokus pada pertempuran darat yang realistis, di mana para pemain mengoordinasikan peran, kendaraan, dan perlengkapan dalam pertempuran daring bersama. Gim ini cocok bagi pemain yang mengutamakan perencanaan matang dan kerja sama tim yang solid. Seiring berjalannya misi, situasi akan berubah dan pemain harus menyesuaikan taktik untuk menyelesaikan tujuan secara bersama-sama. Pengalaman bermainnya sangat mengapresiasi komunikasi, ketepatan waktu, dan pemilihan perlengkapan yang cerdas, yang membantu skuad bergerak sebagai satu kesatuan di medan yang luas. Bagi pengguna yang mempertimbangkan berbagai opsi instalasi, APK Harekat 2 memungkinkan Anda bermain di perangkat Android dengan kontrol yang jelas dan menu yang mudah diakses.\n\nFitur utama Harekat 2 Realisme berbasis masukan komunitas Harekat 2 dikembangkan berdasarkan masukan dari pemain Harekat TTZA untuk menciptakan simulasi militer yang realistis. Perilaku kendaraan, senjata, dan perlengkapan terasa sesuai dengan peran aslinya. Aspek fisika dan suara dirancang untuk mencerminkan pergerakan serta jarak yang nyata, sehingga mendukung pengambilan keputusan yang tepat saat pertempuran. Operasi darat dan konvoi di dunia terbuka Peta yang luas memberikan ruang bagi skuad untuk merencanakan rute, menentukan titik jalan (*waypoint*), dan mengatur jarak antar-kendaraan di berbagai medan. Anda dapat bekerja sama dengan teman untuk membentuk konvoi, menentukan kendaraan pemimpin dan pendukung, serta mendistribusikan perbekalan ke posisi garis depan. Struktur ini memperjelas pembagian peran saat tim bergerak menuju sasaran. Siklus siang-malam dan perubahan cuaca Waktu dan kondisi cuaca memengaruhi jarak pandang serta jangkauan pertempuran. Kabut membatasi jarak pandang, hujan mengubah pengendalian kendaraan, dan terik matahari menimbulkan silau. Seiring perubahan kondisi, Anda dapat menyesuaikan optik, kecepatan gerak, dan strategi pendekatan agar setiap kontak senjata ditangani dengan respons yang tepat. Progresi, pembelian, dan kustomisasi Harekat 2 menawarkan sistem progresi yang mendalam melalui beragam aset militer. Anda dapat membeli lebih dari 13 jenis kendaraan, memodifikasi lebih dari 9 jenis senjata, dan melengkapi diri dengan berbagai perlengkapan sesuai kebutuhan peran. Sistem ini memungkinkan peningkatan kemampuan secara bertahap tanpa memaksakan gaya bermain tertentu. Kerja sama tim daring dan koordinasi misi Server multipemain mendukung skuad untuk berbagi tugas dan menyinkronkan waktu sebelum terlibat kontak senjata. Komunikasi yang jelas memudahkan pemain dalam menandai target, meminta dukungan logistik, dan memulihkan diri setelah pertempuran. Dengan koordinasi yang baik, tim tetap terorganisasi mulai dari tahap persiapan hingga evakuasi. Audiovisual dan mekanik yang imersif Grafis berkualitas tinggi dan audio spasial membantu pemain mengenali medan serta ancaman di sekitar. Aspek pergerakan, hentakan senjata (*recoil*), dan pengendalian kendaraan memberikan pengalaman yang konsisten di berbagai peran. Detail-detail ini mendorong perencanaan yang matang, bukan sekadar aksi terburu-buru ala gim arkade.\n\nCatatan penting untuk Harekat 2 Permainan ini mungkin menampilkan iklan dan menawarkan pembelian dalam aplikasi untuk item tambahan atau peningkatan. Pembelian dan perubahan saldo dilakukan melalui menu di dalam permainan, sehingga pengguna sebaiknya memeriksa notifikasi atau instruksi yang muncul sebelum mengonfirmasi transaksi apa pun. Ketersediaan konten dan harga dapat berbeda-beda tergantung wilayah. Berdasarkan informasi dari pengembang, data lokasi dapat dikumpulkan atau dibagikan untuk kebutuhan operasional, dan data dienkripsi saat dalam proses transmisi. Pengguna dapat mengajukan permintaan penghapusan data melalui saluran dukungan resmi. Untuk informasi terkini mengenai praktik penanganan data, silakan kunjungi situs web pengembang.\n\nCommunity and availability for Harekat 2\nHarekat 2 is available on Android, and an iOS version is also offered by the developer. Release timing and features can differ between platforms. For the official community, the developer maintains a Discord; visit the developer website to find the current invite and announcements.\n\nAvoid searching for or using hacks such as “Unlimited Money and Gems.” Unofficial modifications can break gameplay, risk account action, or expose devices to unwanted files. Use the official build to keep progression and saves stable.\n\nCara bermain Harekat 2 di Android Pastikan koneksi stabil dan pilih server yang sesuai dengan wilayah Anda. Sebagai persiapan awal, unduh Harekat 2 dan periksa pengaturan dalam gim sebelum bergabung dengan skuad. Buka gim dan selesaikan pengaturan profil dasar. Kemudian, pilih server dengan *ping* dan jumlah pemain yang memadai agar responsivitas permainan tetap terjaga. Pilih peran dan kendaraan yang sesuai dengan misi. Periksa perlengkapan (*loadout*), beli atau pasang item yang dibutuhkan, serta pastikan ketersediaan amunisi dan peralatan untuk tugas tersebut. Bentuk skuad dan susun konvoi. Tentukan kendaraan pemimpin, atur posisi dukungan dan logistik, serta bagikan titik tujuan (*waypoint*) agar semua anggota memahami jarak antar-kendaraan dan kecepatan yang harus dijaga. Periksa kondisi cuaca dan waktu sebelum bergerak. Sesuaikan optik, pilih rute yang terlindung, atur lampu depan saat malam hari, dan jaga komunikasi untuk mengamankan sisi samping (*flank*). Koordinasikan respons saat terjadi kontak senjata sebagai satu tim. Informasikan posisi target, manfaatkan perlindungan (*cover*), kelola pasokan ulang, dan berkumpul kembali untuk evakuasi. Setelah misi selesai, tinjau peningkatan (*upgrade*) dan sesuaikan peran jika perlu.","warningDescription":"• Infinity Health\n• Infinity Stamina\n• Infinity Vehicle & Helicopter\n• Infinity Ammo\n• No Recoil\n• Big Accuracy\n• Big Damage\n• No Shot Me\n• Stop You\n• Infinity Granad, Medkit\n• Current Inventory Capacity\n• Inventory Max Overdrive (99999999)\n• Unlimited Backpack Ammo\n• Remove Detect Cheat\n• Remove User Name\n• Remove Safe Zone\n• First Person Camera\n• Cinematic Vehicle\n• Cinematic Player\n• Camera Field Of View\n• Camera Sky View\n• Walk Underwater\n• Add Flare to 1000\n• Infinity Ammo\n• Add Ammo Tank 99999999\n• Instant Room Card\n• Auto Farm XP\n• Auto Big Rank XP\n• Have Face Paint\n• Infinity Time Remaining\n• Ticket Tim 1\n• Ticket Tim 2\n• Set Max Player\n• Mode Music Battle\n• Room Public - Private\n• Unlock Vehicle Respawn\n• Custome User Name\n• Set Time Task\n• Completed Task\n• Magic Respawn Enemies\n• Show Enemies Stats\n• Sound Sfx HeadShoot\n• Player Speed\n• Reset Speed","imageUrl":"https://ik.imagekit.io/he6c4oh6cy/unnamed.webp","apkUrl":"https://sfl.gl/3AILA5","network":"Online","screenshotsStr":"https://ik.imagekit.io/he6c4oh6cy/Screenshot_2026-07-30-12-29-21-21_e3fe0b411dba6029bf2939092d36287e.jpg,https://ik.imagekit.io/he6c4oh6cy/Screenshot_2026-07-30-12-29-25-85_e3fe0b411dba6029bf2939092d36287e.jpg,https://ik.imagekit.io/he6c4oh6cy/Screenshot_2026-07-30-12-29-32-36_e3fe0b411dba6029bf2939092d36287e.jpg,https://ik.imagekit.io/he6c4oh6cy/Screenshot_2026-07-30-12-29-41-08_e3fe0b411dba6029bf2939092d36287e.jpg","priceType":"Free"},{"id":1,"title":"Arena Cacing","version":"v 1.0","updateDate":"Rabu, 29 juli","size":"23.82 Mb","rating":50.0,"ratingCount":999,"genre":"Action, Arcade, Multiplayer, Online, Casual","androidVersion":"7.0+","developer":"Tap-Apks","description":"# 🐛 Cacing Arena Online\n\nMasuki arena dan buktikan siapa cacing terkuat! **Cacing Arena Online** adalah game multiplayer real-time yang menguji kecepatan, strategi, dan refleksmu saat bertarung melawan pemain lain dari seluruh dunia.\n\nKumpulkan makanan untuk memperbesar tubuh cacingmu, hindari tabrakan dengan lawan yang lebih besar, dan gunakan strategi untuk menjebak musuh agar keluar dari permainan. Semakin besar cacingmu, semakin besar peluangmu untuk menguasai arena dan menduduki peringkat teratas.\n\n## 🌍 Fitur Utama\n\n🎮 Multiplayer Online\n• Bertanding melawan pemain lain secara real-time.\n• Arena selalu dipenuhi pemain aktif.\n\n🍎 Kumpulkan Makanan\n• Makan buah dan makanan yang tersebar di arena.\n• Perbesar tubuh cacingmu dan raih skor tertinggi.\n\n🏆 Leaderboard Global\n• Bersaing menjadi pemain terbaik.\n• Naikkan peringkatmu dan kuasai papan leaderboard.\n\n🚀 Boost Cepat\n• Aktifkan Boost untuk mengejar lawan atau melarikan diri dari bahaya.\n• Gunakan dengan strategi agar tidak kehilangan ukuran tubuh.\n\n🔐 Login Akun\n• Simpan progres permainan.\n• Lanjutkan bermain kapan saja menggunakan akunmu.\n\n🎨 Skin Menarik\n• Gunakan berbagai tampilan cacing yang unik.\n• Tunjukkan gaya bermainmu di arena.\n\n⚡ Gameplay Ringan\n• Kontrol sederhana dan mudah dimainkan.\n• Cocok untuk semua usia.\n\n## Cara Bermain\n\n• Gerakkan cacing untuk mengumpulkan makanan.\n• Hindari menabrak tubuh cacing lain.\n• Gunakan Boost di saat yang tepat.\n• Bertahan selama mungkin.\n• Jadilah cacing terbesar dan kuasai arena!\n\nSiap menjadi Raja Arena? Unduh sekarang dan buktikan kemampuanmu dalam pertarungan cacing online yang seru, kompetitif, dan penuh tantangan!","warningDescription":"","imageUrl":"https://ik.imagekit.io/he6c4oh6cy/file_00000000ebb88207b1747290acaa4c02.png","apkUrl":"https://www.mediafire.com/file/m541qwicizjwsah/Cacing_Arena_v1.0.apk/file","network":"Online","screenshotsStr":"https://ik.imagekit.io/he6c4oh6cy/file_000000001e4482079e9a0f79b984dbbc.png,https://ik.imagekit.io/he6c4oh6cy/file_00000000e4c8821194401debf0b02f17.png,https://ik.imagekit.io/he6c4oh6cy/file_00000000f6ec8211ad61f9f81e354a7e.png","priceType":"Free"}];
 
@@ -165,6 +210,63 @@
             document.getElementById('viewer-image').src = '';
         }
 
+        let currentShareUrl = '';
+
+        function shareGame(id) {
+            const game = games.find(g => String(g.id) === String(id));
+            if (!game) return;
+            
+            // Generate the shared URL for the second page
+            const shareUrl = window.location.origin + window.location.pathname + '#game-' + game.id;
+            currentShareUrl = shareUrl;
+            
+            // Set input value
+            document.getElementById('share-url-input').value = shareUrl;
+            
+            // Set social share links
+            const shareText = 'Download ' + game.title + ' di Tap Apks sekarang!';
+            document.getElementById('share-wa').href = 'https://api.whatsapp.com/send?text=' + encodeURIComponent(shareText + '\n' + shareUrl);
+            document.getElementById('share-tg').href = 'https://t.me/share/url?url=' + encodeURIComponent(shareUrl) + '&text=' + encodeURIComponent(shareText);
+            document.getElementById('share-fb').href = 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(shareUrl);
+            
+            // Reset Copy button state
+            const copyBtn = document.getElementById('copy-btn');
+            copyBtn.innerText = 'Salin';
+            copyBtn.className = 'bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold px-3.5 py-2 rounded-lg transition-colors flex-shrink-0';
+            
+            // Show Popup
+            document.getElementById('share-popup').classList.remove('hidden');
+            document.getElementById('share-popup').classList.add('flex');
+        }
+
+        function closeSharePopup() {
+            document.getElementById('share-popup').classList.add('hidden');
+            document.getElementById('share-popup').classList.remove('flex');
+        }
+
+        function copyShareLink() {
+            const copyText = document.getElementById('share-url-input');
+            copyText.select();
+            copyText.setSelectionRange(0, 99999); // For mobile devices
+            
+            navigator.clipboard.writeText(copyText.value).then(() => {
+                const copyBtn = document.getElementById('copy-btn');
+                copyBtn.innerText = 'Disalin!';
+                copyBtn.className = 'bg-emerald-600 text-white text-xs font-semibold px-3.5 py-2 rounded-lg flex-shrink-0';
+                
+                // Reset after 2 seconds
+                setTimeout(() => {
+                    const cb = document.getElementById('copy-btn');
+                    if (cb && document.getElementById('share-popup').classList.contains('flex')) {
+                        cb.innerText = 'Salin';
+                        cb.className = 'bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold px-3.5 py-2 rounded-lg transition-colors flex-shrink-0';
+                    }
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy text: ', err);
+            });
+        }
+
         function toggleDrawer() {
             const drawer = document.getElementById('drawer');
             const overlay = document.getElementById('drawer-overlay');
@@ -180,6 +282,10 @@
         }
 
         function renderHome() {
+            if (window.location.hash !== '') {
+                window.location.hash = '';
+                return;
+            }
             document.getElementById('home-view').classList.remove('hidden');
             document.getElementById('detail-view').classList.add('hidden');
             
@@ -228,7 +334,12 @@
         }
 
         function renderDetail(id) {
-            const game = games.find(g => g.id === id);
+            if (window.location.hash !== '#game-' + id) {
+                window.location.hash = 'game-' + id;
+                return;
+            }
+            
+            const game = games.find(g => String(g.id) === String(id));
             if (!game) return;
             
             document.getElementById('home-view').classList.add('hidden');
@@ -294,13 +405,20 @@
                             <img src="${game.imageUrl}" class="w-full h-full object-cover bg-gray-100">
                             ${detailBadgeHtml}
                         </div>
-                        <div class="flex-1">
-                            <h2 class="text-xl font-bold leading-tight mb-2">${game.title}</h2>
-                            <div class="flex items-center gap-2 mb-2">
-                                <svg class="w-4 h-4 star-icon" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                                <span class="text-sm font-medium">${game.rating} (${game.ratingCount})</span>
-                                <span class="bg-blue-100 text-blue-700 text-xs px-2 py-0.5 rounded ml-2">${game.genre}</span>
+                        <div class="flex-1 flex justify-between items-start">
+                            <div>
+                                <h2 class="text-xl font-bold leading-tight mb-2">${game.title}</h2>
+                                <div class="flex items-center gap-2 mb-2">
+                                    <svg class="w-4 h-4 star-icon" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                                    <span class="text-sm font-medium">${game.rating} (${game.ratingCount})</span>
+                                    <span class="bg-blue-100 text-blue-700 text-xs px-2 py-0.5 rounded ml-2">${game.genre}</span>
+                                </div>
                             </div>
+                            <button onclick="shareGame('${game.id}')" class="text-gray-500 hover:text-blue-600 p-1.5 rounded-full hover:bg-gray-100 transition-colors flex-shrink-0" title="Bagikan Game">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M8.684 10.742l4.628-2.314m0 0a3 3 0 10-2.243-4.077L7.5 7.15c-.064.032-.125.068-.184.107m0 0a3 3 0 101.368 4.672L12.5 14h.001M16.5 16.5A3 3 0 1113.5 14a3 3 0 013 0z"/>
+                                </svg>
+                            </button>
                         </div>
                     </div>
 
@@ -350,7 +468,21 @@
             `;
         }
 
-        renderHome();
+        function handleRouting() {
+            const hash = window.location.hash;
+            if (hash && hash.startsWith('#game-')) {
+                const gameIdStr = hash.replace('#game-', '');
+                const game = games.find(g => String(g.id) === String(gameIdStr));
+                if (game) {
+                    renderDetail(game.id);
+                    return;
+                }
+            }
+            renderHome();
+        }
+
+        window.addEventListener('hashchange', handleRouting);
+        handleRouting();
     </script>
 </body>
 </html>
