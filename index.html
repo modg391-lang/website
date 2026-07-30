@@ -77,20 +77,22 @@
     </div>
 
     <!-- Fullscreen Image Viewer -->
-    <div id="image-viewer" class="fixed inset-0 bg-black bg-opacity-95 z-[100] hidden flex-col items-center justify-center">
-        <button onclick="closeImageViewer()" class="absolute top-4 right-4 text-white p-1.5 bg-black bg-opacity-50 rounded-full hover:bg-opacity-70 transition-colors">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+    <div id="image-viewer" class="fixed inset-0 bg-black bg-opacity-95 z-[100] hidden flex-col items-center justify-center p-4" onclick="closeImageViewer()">
+        <button onclick="closeImageViewer(); event.stopPropagation();" class="absolute top-4 right-4 text-white p-1.5 bg-black bg-opacity-50 rounded-full hover:bg-opacity-70 transition-colors z-50">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
         </button>
-        <img id="viewer-image" class="max-w-full max-h-[90vh] object-contain px-4" src="">
+        <div class="max-w-full max-h-[90vh] flex items-center justify-center">
+            <img id="viewer-image" class="max-w-full max-h-[90vh] object-contain rounded-lg" src="" onclick="event.stopPropagation()">
+        </div>
     </div>
 
     <!-- VIP Promo Pop-up -->
-    <div id="vip-popup" class="fixed inset-0 bg-black bg-opacity-80 z-[110] hidden items-center justify-center p-4">
-        <div class="relative max-w-sm w-full bg-[#111] rounded-2xl overflow-hidden shadow-2xl flex flex-col items-center">
+    <div id="vip-popup" class="fixed inset-0 bg-black bg-opacity-80 z-[110] hidden items-center justify-center p-4" onclick="closeVipPopup()">
+        <div class="relative max-w-xs w-full bg-[#111] rounded-2xl overflow-hidden shadow-2xl flex flex-col" onclick="event.stopPropagation()">
             <!-- Close Button (x) and QR Icon (floating on top of banner) -->
             <div class="absolute top-3 right-3 z-20 flex gap-2">
                 <!-- QR Icon Button -->
-                <button onclick="showQrCode()" class="bg-black bg-opacity-60 hover:bg-opacity-80 text-white p-2 rounded-full backdrop-blur-sm transition-all shadow-md" title="Tampilkan QR Code">
+                <button onclick="showQrCode(); event.stopPropagation();" class="bg-black bg-opacity-60 hover:bg-opacity-80 text-white p-2 rounded-full backdrop-blur-sm transition-all shadow-md" title="Tampilkan QR Code">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
                         <rect x="3" y="3" width="7" height="7" rx="1.5"></rect>
                         <rect x="14" y="3" width="7" height="7" rx="1.5"></rect>
@@ -99,16 +101,16 @@
                     </svg>
                 </button>
                 <!-- Close Button -->
-                <button onclick="closeVipPopup()" class="bg-black bg-opacity-60 hover:bg-opacity-80 text-white p-2 rounded-full backdrop-blur-sm transition-all shadow-md">
+                <button onclick="closeVipPopup(); event.stopPropagation();" class="bg-black bg-opacity-60 hover:bg-opacity-80 text-white p-2 rounded-full backdrop-blur-sm transition-all shadow-md">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
                     </svg>
                 </button>
             </div>
 
-            <!-- Banner Image Container -->
-            <div class="relative w-full aspect-[2/3] max-h-[85vh]">
-                <img src="https://ik.imagekit.io/he6c4oh6cy/Project%20Capture%20(1).jpg" class="w-full h-full object-contain" alt="Promo VIP">
+            <!-- Banner Image Container with guaranteed 2:3 aspect-ratio container size -->
+            <div class="w-full relative" style="padding-top: 150%;">
+                <img src="https://ik.imagekit.io/he6c4oh6cy/Project%20Capture%20(1).jpg" class="absolute inset-0 w-full h-full object-cover rounded-2xl" alt="Promo VIP">
                 <!-- Precise clickable WhatsApp overlay button at the bottom -->
                 <a href="https://wa.link/7ybah8" target="_blank" class="absolute bottom-[2%] left-[4%] right-[4%] h-[8%] rounded-full cursor-pointer transition-transform hover:scale-[1.02] active:scale-95" title="Pesan Lewat WhatsApp">
                 </a>
@@ -393,7 +395,7 @@
                         <div class="mt-6">
                             <h3 class="font-bold text-lg mb-2">Screenshot</h3>
                             <div class="flex overflow-x-auto gap-3 pb-2">
-                                ${urls.map(url => `<img src="${url}" onclick="openImageViewer('${url}')" class="w-60 h-32 object-cover rounded-lg cursor-pointer">`).join('')}
+                                ${urls.map(url => `<img src="${url}" onclick="openImageViewer(this.src)" class="w-60 h-32 object-cover rounded-lg cursor-pointer">`).join('')}
                             </div>
                         </div>
                     `;
