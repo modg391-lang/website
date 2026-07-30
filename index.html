@@ -84,8 +84,74 @@
         <img id="viewer-image" class="max-w-full max-h-[90vh] object-contain px-4" src="">
     </div>
 
+    <!-- VIP Promo Pop-up -->
+    <div id="vip-popup" class="fixed inset-0 bg-black bg-opacity-80 z-[110] hidden items-center justify-center p-4">
+        <div class="relative max-w-sm w-full bg-[#111] rounded-2xl overflow-hidden shadow-2xl flex flex-col items-center">
+            <!-- Close Button (x) and QR Icon (floating on top of banner) -->
+            <div class="absolute top-3 right-3 z-20 flex gap-2">
+                <!-- QR Icon Button -->
+                <button onclick="showQrCode()" class="bg-black bg-opacity-60 hover:bg-opacity-80 text-white p-2 rounded-full backdrop-blur-sm transition-all shadow-md" title="Tampilkan QR Code">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                        <rect x="3" y="3" width="7" height="7" rx="1.5"></rect>
+                        <rect x="14" y="3" width="7" height="7" rx="1.5"></rect>
+                        <rect x="3" y="14" width="7" height="7" rx="1.5"></rect>
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M14 14h2m3 0h2m-5 3h5m-5 4h2m3 0h2"></path>
+                    </svg>
+                </button>
+                <!-- Close Button -->
+                <button onclick="closeVipPopup()" class="bg-black bg-opacity-60 hover:bg-opacity-80 text-white p-2 rounded-full backdrop-blur-sm transition-all shadow-md">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Banner Image Container -->
+            <div class="relative w-full aspect-[2/3] max-h-[85vh]">
+                <img src="https://ik.imagekit.io/he6c4oh6cy/Project%20Capture%20(1).jpg" class="w-full h-full object-contain" alt="Promo VIP">
+                <!-- Precise clickable WhatsApp overlay button at the bottom -->
+                <a href="https://wa.link/7ybah8" target="_blank" class="absolute bottom-[2%] left-[4%] right-[4%] h-[8%] rounded-full cursor-pointer transition-transform hover:scale-[1.02] active:scale-95" title="Pesan Lewat WhatsApp">
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Fullscreen QR Code View -->
+    <div id="qr-popup" class="fixed inset-0 bg-black bg-opacity-95 z-[120] hidden flex-col items-center justify-center p-4">
+        <!-- Close Button (x) in the top right of fullscreen area -->
+        <button onclick="closeQrCode()" class="absolute top-4 right-4 bg-white bg-opacity-20 hover:bg-opacity-40 text-white p-3 rounded-full transition-all shadow-lg z-50">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </button>
+        <div class="max-w-md w-full flex flex-col items-center text-center">
+            <img src="https://ik.imagekit.io/he6c4oh6cy/wa.link_7ybah8.png" class="max-w-xs w-full h-auto object-contain rounded-2xl bg-white p-4 shadow-2xl mb-4" alt="WhatsApp QR Code">
+            <p class="text-white text-sm font-semibold px-4">Pindai Kode QR ini untuk memesan langsung melalui WhatsApp Anda</p>
+        </div>
+    </div>
+
     <script>
-        const games = [{"id":2,"title":"Harekat 2 Online","version":"v5.2.5","updateDate":"may 31, 2026","size":"911.96GB","rating":16.0,"ratingCount":250000,"genre":"Action, Open World, Multiplayer","androidVersion":"Android 8.1 (Oreo) atau lebih baru (minimal).","developer":"Devlaps Ltd","description":"\nHomeGamesSimulationHarekat 2\nHarekat 2 icon\nHarekat 2 Online\nDevlaps Ltd.\n5.2.5\n7.0\n17\nReviews\nFeb 16, 2026\nUpdate date\nSecurity\nTeen\nAndroid 8.1+\nAndroid OS\nDiscover more\nAutos & Vehicles\nGame\nMobile Apps & Add-Ons\nDownload APK (1.6 GB)\nHow to install XAPK / APK file\nAPKPure icon\nUse APKPure App\nGet Harekat 2 old version APK for Android\nDownload\nAbout Harekat 2\nMolly Reagan avatar\nReviewed by\nMolly Reagan\nContent Editor\nHarekat 2 is a tactical military simulation game that delivers authentic battlefield operations.\nHarekat 2 focuses on realistic ground combat where players coordinate roles, vehicles, and equipment in shared online battles. It suits users who prefer careful planning and steady teamwork. As missions unfold, conditions change and players adjust tactics to complete objectives together. The overall experience rewards communication, timing, and smart loadouts, which helps squads move as a unit across large terrain. For users comparing install options, Harekat 2 APK lets you play on Android with clear controls and accessible menus.\n\n\n\nCore features of Harekat 2\nCommunity-driven realism\nHarekat 2 builds on feedback from Harekat TTZA players to shape a grounded mil-sim. Vehicles, weapons, and gear behave in ways that feel consistent with their intended roles. Physics and sound aim to reflect real movement and distance, which supports practical decision-making during fights.\n\nOpen-world ground operations and convoys\nLarge maps give squads room to plan routes, set waypoints, and manage spacing across varied terrain. You can team up with friends to form convoys, assign lead and support vehicles, and move supplies to forward positions. This structure keeps roles clear as the team advances toward objectives.\n\nDay and night cycle with changing weather\nTime of day and weather conditions affect visibility and engagement range. Fog slows sightlines, rain changes handling, and bright sun impacts glare. As conditions shift, you adjust optics, pace, and approach so that each contact is handled with a fitting response.\n\nProgression, purchasing, and customization\nHarekat 2 offers progression depth through a range of military assets. You can purchase more than 13 vehicles, customize over 9 weapons, and equip dozens of items to fit role needs. This system supports steady upgrades without forcing a single playstyle.\n\nOnline teamwork and mission coordination\nMultiplayer servers support squads that share tasks and synchronize timing before contact. Clear comms help players mark targets, call logistics, and recover after engagements. With steady coordination, teams remain organized from staging to extraction.\n\nImmersive audiovisuals and mechanics\nHigh-fidelity graphics and positional audio help players read terrain and threats. Movement, recoil, and vehicle handling bring a consistent feel across different roles. These details support careful planning rather than arcade-style rushing.\n\n\n\nImportant notes for Harekat 2\nThe game may show ads and offer in-app purchases for additional items or upgrades. Purchases and balance changes are handled inside the game menus, so users should review prompts before confirming any transaction. Availability of content and pricing can vary by region.\n\nAccording to developer disclosures, location data may be collected or shared for operational needs, and data is encrypted in transit. Users can request deletion through official support channels. For current details on data practices, check the developer website.\n\n\n\nCommunity and availability for Harekat 2\nHarekat 2 is available on Android, and an iOS version is also offered by the developer. Release timing and features can differ between platforms. For the official community, the developer maintains a Discord; visit the developer website to find the current invite and announcements.\n\nAvoid searching for or using hacks such as “Unlimited Money and Gems.” Unofficial modifications can break gameplay, risk account action, or expose devices to unwanted files. Use the official build to keep progression and saves stable.\n\n\n\nHow to play Harekat 2 on Android\nStart with a stable connection and choose a server that fits your region. To prepare for your first session, download Harekat 2 and review the in-game settings before joining a squad.\n\nLaunch the game and complete basic profile setup. Then choose a server with suitable ping and player count to keep actions responsive.\nSelect a role and vehicle that match the mission. Review your loadout, purchase or equip items you need, and confirm ammo and tools for the task.\nForm a squad and assemble a convoy. Assign a lead vehicle, set support and logistics positions, and share waypoints so everyone understands spacing and speed.\nCheck weather and time before moving out. Adjust optics, choose covered routes, control headlights at night, and maintain comms to guard flanks.\nCoordinate contact responses as a team. Call targets, use cover, manage resupply, and regroup for extraction. After the mission, review upgrades and adjust roles.\n\n\nGet started with grounded convoy operations\nHarekat 2 focuses on realistic teamwork, changing conditions, and role-based ground combat. To begin playing with steady performance and features, install the Harekat 2 latest version on your Android device.","warningDescription":"• Infinity Health\n• Infinity Stamina\n• Infinity Vehicle & Helicopter\n• Infinity Ammo\n• No Recoil\n• Big Accuracy\n• Big Damage\n• No Shot Me\n• Stop You\n• Infinity Granad, Medkit\n• Current Inventory Capacity\n• Inventory Max Overdrive (99999999)\n• Unlimited Backpack Ammo\n• Remove Detect Cheat\n• Remove User Name\n• Remove Safe Zone\n• First Person Camera\n• Cinematic Vehicle\n• Cinematic Player\n• Camera Field Of View\n• Camera Sky View\n• Walk Underwater\n• Add Flare to 1000\n• Infinity Ammo\n• Add Ammo Tank 99999999\n• Instant Room Card\n• Auto Farm XP\n• Auto Big Rank XP\n• Have Face Paint\n• Infinity Time Remaining\n• Ticket Tim 1\n• Ticket Tim 2\n• Set Max Player\n• Mode Music Battle\n• Room Public - Private\n• Unlock Vehicle Respawn\n• Custome User Name\n• Set Time Task\n• Completed Task\n• Magic Respawn Enemies\n• Show Enemies Stats\n• Sound Sfx HeadShoot\n• Player Speed\n• Reset Speed","imageUrl":"https://ik.imagekit.io/he6c4oh6cy/unnamed.webp","apkUrl":"https://sfl.gl/3AILA5","network":"Online","screenshotsStr":"https://ik.imagekit.io/he6c4oh6cy/Screenshot_2026-07-30-12-29-21-21_e3fe0b411dba6029bf2939092d36287e.jpg,https://ik.imagekit.io/he6c4oh6cy/Screenshot_2026-07-30-12-29-25-85_e3fe0b411dba6029bf2939092d36287e.jpg,https://ik.imagekit.io/he6c4oh6cy/Screenshot_2026-07-30-12-29-32-36_e3fe0b411dba6029bf2939092d36287e.jpg,https://ik.imagekit.io/he6c4oh6cy/Screenshot_2026-07-30-12-29-41-08_e3fe0b411dba6029bf2939092d36287e.jpg"},{"id":1,"title":"Arena Cacing","version":"v 1.0","updateDate":"Rabu, 29 juli","size":"23.82Mb","rating":50.0,"ratingCount":999,"genre":"Action, Arcade, Multiplayer, Online, Casual","androidVersion":"7.0+","developer":"Tap-Apks","description":"# 🐛 Cacing Arena Online\n\nMasuki arena dan buktikan siapa cacing terkuat! **Cacing Arena Online** adalah game multiplayer real-time yang menguji kecepatan, strategi, dan refleksmu saat bertarung melawan pemain lain dari seluruh dunia.\n\nKumpulkan makanan untuk memperbesar tubuh cacingmu, hindari tabrakan dengan lawan yang lebih besar, dan gunakan strategi untuk menjebak musuh agar keluar dari permainan. Semakin besar cacingmu, semakin besar peluangmu untuk menguasai arena dan menduduki peringkat teratas.\n\n## 🌍 Fitur Utama\n\n🎮 Multiplayer Online\n• Bertanding melawan pemain lain secara real-time.\n• Arena selalu dipenuhi pemain aktif.\n\n🍎 Kumpulkan Makanan\n• Makan buah dan makanan yang tersebar di arena.\n• Perbesar tubuh cacingmu dan raih skor tertinggi.\n\n🏆 Leaderboard Global\n• Bersaing menjadi pemain terbaik.\n• Naikkan peringkatmu dan kuasai papan leaderboard.\n\n🚀 Boost Cepat\n• Aktifkan Boost untuk mengejar lawan atau melarikan diri dari bahaya.\n• Gunakan dengan strategi agar tidak kehilangan ukuran tubuh.\n\n🔐 Login Akun\n• Simpan progres permainan.\n• Lanjutkan bermain kapan saja menggunakan akunmu.\n\n🎨 Skin Menarik\n• Gunakan berbagai tampilan cacing yang unik.\n• Tunjukkan gaya bermainmu di arena.\n\n⚡ Gameplay Ringan\n• Kontrol sederhana dan mudah dimainkan.\n• Cocok untuk semua usia.\n\n## Cara Bermain\n\n• Gerakkan cacing untuk mengumpulkan makanan.\n• Hindari menabrak tubuh cacing lain.\n• Gunakan Boost di saat yang tepat.\n• Bertahan selama mungkin.\n• Jadilah cacing terbesar dan kuasai arena!\n\nSiap menjadi Raja Arena? Unduh sekarang dan buktikan kemampuanmu dalam pertarungan cacing online yang seru, kompetitif, dan penuh tantangan!","warningDescription":"","imageUrl":"https://ik.imagekit.io/he6c4oh6cy/file_00000000ebb88207b1747290acaa4c02.png","apkUrl":"https://www.mediafire.com/file/m541qwicizjwsah/Cacing_Arena_v1.0.apk/file","network":"Online","screenshotsStr":"https://ik.imagekit.io/he6c4oh6cy/file_000000001e4482079e9a0f79b984dbbc.png,https://ik.imagekit.io/he6c4oh6cy/file_00000000e4c8821194401debf0b02f17.png,https://ik.imagekit.io/he6c4oh6cy/file_00000000f6ec8211ad61f9f81e354a7e.png"}];
+        const games = [{"id":2,"title":"Harekat 2 Online","version":"v5.2.5","updateDate":"may 31, 2026","size":"911.96GB","rating":16.0,"ratingCount":250000,"genre":"Action, Open World, Multiplayer","androidVersion":"Android 8.1 (Oreo) atau lebih baru (minimal).","developer":"Devlaps Ltd","description":"\nHomeGamesSimulationHarekat 2\nHarekat 2 icon\nHarekat 2 Online\nDevlaps Ltd.\n5.2.5\n7.0\n17\nReviews\nFeb 16, 2026\nUpdate date\nSecurity\nTeen\nAndroid 8.1+\nAndroid OS\nDiscover more\nAutos & Vehicles\nGame\nMobile Apps & Add-Ons\nDownload APK (1.6 GB)\nHow to install XAPK / APK file\nAPKPure icon\nUse APKPure App\nGet Harekat 2 old version APK for Android\nDownload\nAbout Harekat 2\nMolly Reagan avatar\nReviewed by\nMolly Reagan\nContent Editor\nHarekat 2 is a tactical military simulation game that delivers authentic battlefield operations.\nHarekat 2 focuses on realistic ground combat where players coordinate roles, vehicles, and equipment in shared online battles. It suits users who prefer careful planning and steady teamwork. As missions unfold, conditions change and players adjust tactics to complete objectives together. The overall experience rewards communication, timing, and smart loadouts, which helps squads move as a unit across large terrain. For users comparing install options, Harekat 2 APK lets you play on Android with clear controls and accessible menus.\n\n\n\nCore features of Harekat 2\nCommunity-driven realism\nHarekat 2 builds on feedback from Harekat TTZA players to shape a grounded mil-sim. Vehicles, weapons, and gear behave in ways that feel consistent with their intended roles. Physics and sound aim to reflect real movement and distance, which supports practical decision-making during fights.\n\nOpen-world ground operations and convoys\nLarge maps give squads room to plan routes, set waypoints, and manage spacing across varied terrain. You can team up with friends to form convoys, assign lead and support vehicles, and move supplies to forward positions. This structure keeps roles clear as the team advances toward objectives.\n\nDay and night cycle with changing weather\nTime of day and weather conditions affect visibility and engagement range. Fog slows sightlines, rain changes handling, and bright sun impacts glare. As conditions shift, you adjust optics, pace, and approach so that each contact is handled with a fitting response.\n\nProgression, purchasing, and customization\nHarekat 2 offers progression depth through a range of military assets. You can purchase more than 13 vehicles, customize over 9 weapons, and equip dozens of items to fit role needs. This system supports steady upgrades without forcing a single playstyle.\n\nOnline teamwork and mission coordination\nMultiplayer servers support squads that share tasks and synchronize timing before contact. Clear comms help players mark targets, call logistics, and recover after engagements. With steady coordination, teams remain organized from staging to extraction.\n\nImmersive audiovisuals and mechanics\nHigh-fidelity graphics and positional audio help players read terrain and threats. Movement, recoil, and vehicle handling bring a consistent feel across different roles. These details support careful planning rather than arcade-style rushing.\n\n\n\nImportant notes for Harekat 2\nThe game may show ads and offer in-app purchases for additional items or upgrades. Purchases and balance changes are handled inside the game menus, so users should review prompts before confirming any transaction. Availability of content and pricing can vary by region.\n\nAccording to developer disclosures, location data may be collected or shared for operational needs, and data is encrypted in transit. Users can request deletion through official support channels. For current details on data practices, check the developer website.\n\n\n\nCommunity and availability for Harekat 2\nHarekat 2 is available on Android, and an iOS version is also offered by the developer. Release timing and features can differ between platforms. For the official community, the developer maintains a Discord; visit the developer website to find the current invite and announcements.\n\nAvoid searching for or using hacks such as “Unlimited Money and Gems.” Unofficial modifications can break gameplay, risk account action, or expose devices to unwanted files. Use the official build to keep progression and saves stable.\n\n\n\nHow to play Harekat 2 on Android\nStart with a stable connection and choose a server that fits your region. To prepare for your first session, download Harekat 2 and review the in-game settings before joining a squad.\n\nLaunch the game and complete basic profile setup. Then choose a server with suitable ping and player count to keep actions responsive.\nSelect a role and vehicle that match the mission. Review your loadout, purchase or equip items you need, and confirm ammo and tools for the task.\nForm a squad and assemble a convoy. Assign a lead vehicle, set support and logistics positions, and share waypoints so everyone understands spacing and speed.\nCheck weather and time before moving out. Adjust optics, choose covered routes, control headlights at night, and maintain comms to guard flanks.\nCoordinate contact responses as a team. Call targets, use cover, manage resupply, and regroup for extraction. After the mission, review upgrades and adjust roles.\n\n\nGet started with grounded convoy operations\nHarekat 2 focuses on realistic teamwork, changing conditions, and role-based ground combat. To begin playing with steady performance and features, install the Harekat 2 latest version on your Android device.","warningDescription":"• Infinity Health\n• Infinity Stamina\n• Infinity Vehicle & Helicopter\n• Infinity Ammo\n• No Recoil\n• Big Accuracy\n• Big Damage\n• No Shot Me\n• Stop You\n• Infinity Granad, Medkit\n• Current Inventory Capacity\n• Inventory Max Overdrive (99999999)\n• Unlimited Backpack Ammo\n• Remove Detect Cheat\n• Remove User Name\n• Remove Safe Zone\n• First Person Camera\n• Cinematic Vehicle\n• Cinematic Player\n• Camera Field Of View\n• Camera Sky View\n• Walk Underwater\n• Add Flare to 1000\n• Infinity Ammo\n• Add Ammo Tank 99999999\n• Instant Room Card\n• Auto Farm XP\n• Auto Big Rank XP\n• Have Face Paint\n• Infinity Time Remaining\n• Ticket Tim 1\n• Ticket Tim 2\n• Set Max Player\n• Mode Music Battle\n• Room Public - Private\n• Unlock Vehicle Respawn\n• Custome User Name\n• Set Time Task\n• Completed Task\n• Magic Respawn Enemies\n• Show Enemies Stats\n• Sound Sfx HeadShoot\n• Player Speed\n• Reset Speed","imageUrl":"https://ik.imagekit.io/he6c4oh6cy/unnamed.webp","apkUrl":"https://sfl.gl/3AILA5","network":"Online","screenshotsStr":"https://ik.imagekit.io/he6c4oh6cy/Screenshot_2026-07-30-12-29-21-21_e3fe0b411dba6029bf2939092d36287e.jpg,https://ik.imagekit.io/he6c4oh6cy/Screenshot_2026-07-30-12-29-25-85_e3fe0b411dba6029bf2939092d36287e.jpg,https://ik.imagekit.io/he6c4oh6cy/Screenshot_2026-07-30-12-29-32-36_e3fe0b411dba6029bf2939092d36287e.jpg,https://ik.imagekit.io/he6c4oh6cy/Screenshot_2026-07-30-12-29-41-08_e3fe0b411dba6029bf2939092d36287e.jpg","priceType":"VIP"},{"id":1,"title":"Arena Cacing","version":"v 1.0","updateDate":"Rabu, 29 juli","size":"23.82Mb","rating":50.0,"ratingCount":999,"genre":"Action, Arcade, Multiplayer, Online, Casual","androidVersion":"7.0+","developer":"Tap-Apks","description":"# 🐛 Cacing Arena Online\n\nMasuki arena dan buktikan siapa cacing terkuat! **Cacing Arena Online** adalah game multiplayer real-time yang menguji kecepatan, strategi, dan refleksmu saat bertarung melawan pemain lain dari seluruh dunia.\n\nKumpulkan makanan untuk memperbesar tubuh cacingmu, hindari tabrakan dengan lawan yang lebih besar, dan gunakan strategi untuk menjebak musuh agar keluar dari permainan. Semakin besar cacingmu, semakin besar peluangmu untuk menguasai arena dan menduduki peringkat teratas.\n\n## 🌍 Fitur Utama\n\n🎮 Multiplayer Online\n• Bertanding melawan pemain lain secara real-time.\n• Arena selalu dipenuhi pemain aktif.\n\n🍎 Kumpulkan Makanan\n• Makan buah dan makanan yang tersebar di arena.\n• Perbesar tubuh cacingmu dan raih skor tertinggi.\n\n🏆 Leaderboard Global\n• Bersaing menjadi pemain terbaik.\n• Naikkan peringkatmu dan kuasai papan leaderboard.\n\n🚀 Boost Cepat\n• Aktifkan Boost untuk mengejar lawan atau melarikan diri dari bahaya.\n• Gunakan dengan strategi agar tidak kehilangan ukuran tubuh.\n\n🔐 Login Akun\n• Simpan progres permainan.\n• Lanjutkan bermain kapan saja menggunakan akunmu.\n\n🎨 Skin Menarik\n• Gunakan berbagai tampilan cacing yang unik.\n• Tunjukkan gaya bermainmu di arena.\n\n⚡ Gameplay Ringan\n• Kontrol sederhana dan mudah dimainkan.\n• Cocok untuk semua usia.\n\n## Cara Bermain\n\n• Gerakkan cacing untuk mengumpulkan makanan.\n• Hindari menabrak tubuh cacing lain.\n• Gunakan Boost di saat yang tepat.\n• Bertahan selama mungkin.\n• Jadilah cacing terbesar dan kuasai arena!\n\nSiap menjadi Raja Arena? Unduh sekarang dan buktikan kemampuanmu dalam pertarungan cacing online yang seru, kompetitif, dan penuh tantangan!","warningDescription":"","imageUrl":"https://ik.imagekit.io/he6c4oh6cy/file_00000000ebb88207b1747290acaa4c02.png","apkUrl":"https://www.mediafire.com/file/m541qwicizjwsah/Cacing_Arena_v1.0.apk/file","network":"Online","screenshotsStr":"https://ik.imagekit.io/he6c4oh6cy/file_000000001e4482079e9a0f79b984dbbc.png,https://ik.imagekit.io/he6c4oh6cy/file_00000000e4c8821194401debf0b02f17.png,https://ik.imagekit.io/he6c4oh6cy/file_00000000f6ec8211ad61f9f81e354a7e.png","priceType":"Free"}];
+
+        function showVipPopup() {
+            document.getElementById('vip-popup').classList.remove('hidden');
+            document.getElementById('vip-popup').classList.add('flex');
+        }
+
+        function closeVipPopup() {
+            document.getElementById('vip-popup').classList.add('hidden');
+            document.getElementById('vip-popup').classList.remove('flex');
+        }
+
+        function showQrCode() {
+            document.getElementById('qr-popup').classList.remove('hidden');
+            document.getElementById('qr-popup').classList.add('flex');
+        }
+
+        function closeQrCode() {
+            document.getElementById('qr-popup').classList.add('hidden');
+            document.getElementById('qr-popup').classList.remove('flex');
+        }
 
         function openImageViewer(url) {
             document.getElementById('viewer-image').src = url;
@@ -121,12 +187,28 @@
             listContainer.innerHTML = '';
             
             games.forEach(game => {
+                const isVip = (game.priceType || 'Free') === 'VIP';
+                const badgeHtml = isVip ? 
+                    `<div class="absolute top-0 right-0 bg-gradient-to-l from-yellow-500 to-amber-600 text-white font-black text-[9px] px-1.5 py-0.5 rounded-bl-md shadow-sm uppercase tracking-wider">VIP</div>` : 
+                    `<div class="absolute top-0 right-0 bg-emerald-500 text-white font-bold text-[8px] px-1 py-0.5 rounded-bl-md shadow-sm">Free</div>`;
+                
+                const actionButtonHtml = isVip ? 
+                    `<button onclick="event.stopPropagation(); showVipPopup()" class="bg-amber-500 hover:bg-amber-600 text-white p-2 rounded-lg flex items-center justify-center shadow-sm" title="Beli VIP">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 100-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"/>
+                        </svg>
+                    </button>` : 
+                    `<a href="${game.apkUrl}" onclick="event.stopPropagation()" class="bg-blue-600 text-white text-sm font-medium px-4 py-1.5 rounded-lg hover:bg-blue-700">Download</a>`;
+
                 const gameEl = document.createElement('div');
                 gameEl.className = 'flex items-center justify-between py-4 border-b border-gray-200 cursor-pointer';
                 gameEl.onclick = () => renderDetail(game.id);
                 gameEl.innerHTML = `
                     <div class="flex items-center gap-4">
-                        <img src="${game.imageUrl}" class="w-16 h-16 rounded-xl object-cover bg-gray-100">
+                        <div class="relative w-16 h-16 rounded-xl overflow-hidden shadow-sm flex-shrink-0">
+                            <img src="${game.imageUrl}" class="w-full h-full object-cover bg-gray-100">
+                            ${badgeHtml}
+                        </div>
                         <div>
                             <h3 class="font-bold text-gray-900">${game.title}</h3>
                             <p class="text-xs text-gray-500 mt-1">${game.version} • ${game.updateDate}</p>
@@ -138,7 +220,7 @@
                     </div>
                     <div class="text-right flex flex-col items-end">
                         <span class="text-xs text-gray-500 mb-2">${game.size}</span>
-                        <a href="${game.apkUrl}" onclick="event.stopPropagation()" class="bg-blue-600 text-white text-sm font-medium px-4 py-1.5 rounded-lg hover:bg-blue-700">Download</a>
+                        ${actionButtonHtml}
                     </div>
                 `;
                 listContainer.appendChild(gameEl);
@@ -179,19 +261,39 @@
                             </svg>
                         </div>
                         <div class="flex-1">
-                            <h4 class="font-bold text-amber-800 text-sm mb-1">------ MOD by Tap Apks------</h4>
+                            <h4 class="font-bold text-amber-800 text-sm mb-1">Informasi Tambahan</h4>
                             <div class="text-sm text-amber-900 whitespace-pre-wrap font-medium">${game.warningDescription}</div>
                         </div>
                     </div>
                 `;
             }
 
+            const isVip = (game.priceType || 'Free') === 'VIP';
+            const detailBadgeHtml = isVip ? 
+                `<div class="absolute top-0 right-0 bg-gradient-to-l from-yellow-500 to-amber-600 text-white font-black text-xs px-2 py-0.5 rounded-bl-lg shadow-sm uppercase tracking-wider">VIP</div>` : 
+                `<div class="absolute top-0 right-0 bg-emerald-500 text-white font-bold text-[10px] px-1.5 py-0.5 rounded-bl-lg shadow-sm">Free</div>`;
+
+            const detailButtonHtml = isVip ?
+                `<button onclick="showVipPopup()" class="block w-full bg-gradient-to-r from-amber-500 to-orange-600 text-white text-center font-bold py-3 rounded-xl hover:from-amber-600 hover:to-orange-700 mb-3 flex items-center justify-center gap-2 shadow-md">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 100-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"/>
+                    </svg>
+                    Beli Versi VIP (${game.size})
+                </button>` :
+                `<a href="${game.apkUrl}" class="block w-full bg-blue-600 text-white text-center font-bold py-3 rounded-xl hover:bg-blue-700 mb-3 flex items-center justify-center gap-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                    Download APK (${game.size})
+                </a>`;
+
             detailContainer.innerHTML = `
                 <div class="p-4">
                     <div class="text-blue-600 text-sm mb-4 cursor-pointer" onclick="renderHome()">Beranda > Game > ${game.title}</div>
                     
                     <div class="flex gap-4 mb-6">
-                        <img src="${game.imageUrl}" class="w-24 h-24 rounded-2xl object-cover bg-gray-100 shadow-sm">
+                        <div class="relative w-24 h-24 rounded-2xl overflow-hidden shadow-sm flex-shrink-0">
+                            <img src="${game.imageUrl}" class="w-full h-full object-cover bg-gray-100">
+                            ${detailBadgeHtml}
+                        </div>
                         <div class="flex-1">
                             <h2 class="text-xl font-bold leading-tight mb-2">${game.title}</h2>
                             <div class="flex items-center gap-2 mb-2">
@@ -202,10 +304,7 @@
                         </div>
                     </div>
 
-                    <a href="${game.apkUrl}" class="block w-full bg-blue-600 text-white text-center font-bold py-3 rounded-xl hover:bg-blue-700 mb-3 flex items-center justify-center gap-2">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
-                        Download APK (${game.size})
-                    </a>
+                    ${detailButtonHtml}
 
                     <div class="grid grid-cols-4 gap-2 border border-gray-200 rounded-xl p-4 mt-6">
                         <div class="text-center">
