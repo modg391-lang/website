@@ -210,6 +210,7 @@
             document.getElementById('viewer-image').src = '';
         }
 
+        const siteUrl = 'https://tap-apks.github.io/website/';
         let currentShareUrl = '';
 
         function shareGame(id) {
@@ -217,7 +218,7 @@
             if (!game) return;
             
             // Generate the shared URL for the second page
-            const shareUrl = window.location.origin + window.location.pathname + '#game-' + game.id;
+            const shareUrl = siteUrl + '#game-' + game.id;
             currentShareUrl = shareUrl;
             
             // Set input value
@@ -249,7 +250,46 @@
             copyText.select();
             copyText.setSelectionRange(0, 99999); // For mobile devices
             
-            navigator.clipboard.writeText(copyText.value).then(() => {
+            try {
+                // Try modern clipboard API first
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    navigator.clipboard.writeText(copyText.value).then(() => {
+                        showCopySuccess();
+                    }).catch(err => {
+                        fallbackCopy();
+                    });
+                } else {
+                    fallbackCopy();
+                }
+            } catch (err) {
+                fallbackCopy();
+            }
+
+            function fallbackCopy() {
+                try {
+                    const successful = document.execCommand('copy');
+                    if (successful) {
+                        showCopySuccess();
+                    } else {
+                        // If it fails, we fall back to Android host via JavascriptInterface
+                        if (window.AndroidBridge && window.AndroidBridge.copyToClipboard) {
+                            window.AndroidBridge.copyToClipboard(copyText.value);
+                            showCopySuccess();
+                        } else {
+                            alert('Gagal menyalin link. Silakan salin secara manual.');
+                        }
+                    }
+                } catch (err) {
+                    if (window.AndroidBridge && window.AndroidBridge.copyToClipboard) {
+                        window.AndroidBridge.copyToClipboard(copyText.value);
+                        showCopySuccess();
+                    } else {
+                        alert('Gagal menyalin link. Silakan salin secara manual.');
+                    }
+                }
+            }
+
+            function showCopySuccess() {
                 const copyBtn = document.getElementById('copy-btn');
                 copyBtn.innerText = 'Disalin!';
                 copyBtn.className = 'bg-emerald-600 text-white text-xs font-semibold px-3.5 py-2 rounded-lg flex-shrink-0';
@@ -262,9 +302,7 @@
                         cb.className = 'bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold px-3.5 py-2 rounded-lg transition-colors flex-shrink-0';
                     }
                 }, 2000);
-            }).catch(err => {
-                console.error('Failed to copy text: ', err);
-            });
+            }
         }
 
         function toggleDrawer() {
