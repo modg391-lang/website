@@ -21,8 +21,31 @@
       "uid": "8351",
       "username": "tap apks",
       "join": "2026-07-31 13:35",
-      "reviews": [],
-      "downloads": {}
+      "reviews": [
+        {
+          "game": "Arena Cacing",
+          "rating": 2,
+          "review": "bagus banget",
+          "time": "2026-07-31 13:35"
+        },
+        {
+          "game": "Harekat 2 Online",
+          "rating": 5,
+          "review": "tes",
+          "time": "2026-07-31 13:36"
+        },
+        {
+          "game": "Media Fire AI",
+          "rating": 5,
+          "review": "mantap",
+          "time": "2026-07-31 13:36"
+        }
+      ],
+      "downloads": {
+        "Arena Cacing": 1,
+        "Harekat 2 Online": 1,
+        "Media Fire AI": 1
+      }
     }
   ]
 }
