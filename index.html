@@ -215,11 +215,19 @@
         const ghOwner = "tap-apks";
         const ghRepo = "website";
         const ghBranch = "main";
-        const ghPath = "Uid.json";
+        const ghPath = "users.json";
+
+        function notifyStatus(msg) {
+            console.log("[AppStatus]", msg);
+            if (window.AndroidBridge && typeof window.AndroidBridge.showToast === 'function') {
+                window.AndroidBridge.showToast(msg);
+            }
+        }
 
         async function syncToGithub() {
             if (!ghToken || !ghOwner || !ghRepo || !ghPath) return;
             try {
+                notifyStatus("Mengirim ulasan/data ke GitHub...");
                 const url = `https://api.github.com/repos/${ghOwner}/${ghRepo}/contents/${ghPath}`;
                 let sha = null;
                 try {
@@ -234,13 +242,13 @@
                 
                 const content = btoa(unescape(encodeURIComponent(JSON.stringify(usersData, null, 2))));
                 const body = {
-                    message: "Update Uid.json from website",
+                    message: "Update users.json from website",
                     content: content,
                     branch: ghBranch || "main"
                 };
                 if (sha) body.sha = sha;
                 
-                await fetch(url, {
+                const res = await fetch(url, {
                     method: "PUT",
                     headers: {
                         "Authorization": "Bearer " + ghToken,
@@ -249,8 +257,16 @@
                     },
                     body: JSON.stringify(body)
                 });
+                if (res.ok) {
+                    notifyStatus("Berhasil menyinkronkan data ke GitHub!");
+                } else {
+                    const errText = await res.text();
+                    console.error("Gagal sync ke github:", errText);
+                    notifyStatus("Gagal menyinkronkan data ke GitHub.");
+                }
             } catch (e) {
                 console.error("Gagal sync ke github", e);
+                notifyStatus("Error koneksi sinkronisasi.");
             }
         }
 
