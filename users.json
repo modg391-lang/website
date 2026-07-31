@@ -25,8 +25,8 @@
         {
           "game": "Arena Cacing",
           "rating": 2,
-          "review": "Mantapp, game cacing arena online yang kompetitip,",
-          "time": "2026-07-31 16:41"
+          "review": "bagus banget",
+          "time": "2026-07-31 13:35"
         },
         {
           "game": "Harekat 2 Online",
@@ -45,6 +45,12 @@
           "rating": 5,
           "review": "mantap banget",
           "time": "2026-07-31 13:53"
+        },
+        {
+          "game": "Mini Arcade",
+          "rating": 5,
+          "review": "gila game loe bang keren semua😋😂",
+          "time": "2026-07-31 16:43"
         }
       ],
       "downloads": {
@@ -65,20 +71,6 @@
       "username": "bansos",
       "join": "2026-07-31 16:26",
       "reviews": [],
-      "downloads": {}
-    },
-    {
-      "uid": "2950",
-      "username": "prajurit",
-      "join": "2026-07-31 16:37",
-      "reviews": [
-        {
-          "game": "Harekat 2 Online",
-          "rating": 5,
-          "review": "gila modnya full gini😋",
-          "time": "2026-07-31 16:40"
-        }
-      ],
       "downloads": {}
     }
   ]
