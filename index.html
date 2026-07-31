@@ -666,12 +666,13 @@ if (game.screenshotsStr) {
                 </button>`;
 
             // Reviews
+            const userReview = currentUser ? (currentUser.reviews || []).find(r => r && r.game === game.title) : null;
             currentRating = userReview ? userReview.rating : 0;
             const existingReviewText = userReview ? userReview.review : '';
             const formTitle = userReview ? 'Ulasan Anda (Edit)' : 'Berikan Ulasan';
             const submitBtnText = userReview ? 'Perbarui Ulasan' : 'Kirim Ulasan';
 
-            reviewSectionHtml = `
+            let reviewSectionHtml = `
                 <div class="border border-gray-200 rounded-xl p-4 mt-6 mb-6 bg-white">
                     <h3 class="font-bold text-lg mb-3 text-gray-800">${formTitle}</h3>
                     <div class="flex items-center gap-1 mb-3" id="rating-stars">
