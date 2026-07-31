@@ -4,9 +4,16 @@
       "uid": "5521",
       "username": "sandinya",
       "join": "2026-07-31 13:18",
-      "reviews": [],
+      "reviews": [
+        {
+          "game": "Harekat 2 Online",
+          "rating": 5,
+          "review": "oke",
+          "time": "2026-07-31 13:18"
+        }
+      ],
       "downloads": {
-        "Harekat 2 Online": 1
+        "Harekat 2 Online": 2
       }
     }
   ]
